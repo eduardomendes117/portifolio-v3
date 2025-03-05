@@ -6,17 +6,22 @@ import { Eye, Github } from "lucide-react";
 import { FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ReactNode, useRef } from "react";
 
-// Componente de animação para elementos que são ativados pelo scroll
+interface AnimateOnScrollProps {
+  children: ReactNode;
+  delay?: number;
+  duration?: number;
+  className?: string;
+}
+
 const AnimateOnScroll = ({
   children,
   delay = 0,
   duration = 0.5,
   className = "",
-}) => {
+}: AnimateOnScrollProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
 
