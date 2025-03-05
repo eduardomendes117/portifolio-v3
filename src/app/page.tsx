@@ -141,7 +141,7 @@ export default function Home() {
 
       <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen bg-xadres bg-xadres-size bg-opacity-10">
         <motion.div
-          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full backdrop-blur-3xl px-8 py-12 shadow-lg before:absolute before:inset-0 before:-z-10 before:bg-white/10 before:blur-[100px]"
+          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-8 py-12 shadow-lg before:absolute before:inset-0 before:-z-10 before:bg-white/5 before:blur-[100px]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
