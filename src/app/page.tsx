@@ -117,24 +117,25 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.a
-              href="https://github.com/eduardomendes117"
-              target="_blank"
-              variants={fadeIn}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaGithub />
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/eduardo-mendes-26538030b/"
-              target="_blank"
-              variants={fadeIn}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaLinkedin />
-            </motion.a>
+            <motion.li variants={fadeIn}>
+              <a
+                href="https://github.com/eduardomendes117"
+                target="_blank"
+                aria-label="GitHub de Eduardo Mendes"
+              >
+                <FaGithub />
+              </a>
+            </motion.li>
+
+            <motion.li variants={fadeIn}>
+              <a
+                href="https://www.linkedin.com/in/eduardo-mendes-26538030b/"
+                target="_blank"
+                aria-label="LinkedIn de Eduardo Mendes"
+              >
+                <FaLinkedin />
+              </a>
+            </motion.li>
           </motion.ul>
         </div>
       </motion.nav>
@@ -316,13 +317,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mt-10">Contatos</h2>
         </AnimateOnScroll>
 
-        <motion.div
-          className="max-w-screen-xl mx-7 2xl:mx-auto my-20 flex gap-10 justify-center flex-wrap"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-        >
+        <ul className="max-w-screen-xl mx-7 2xl:mx-auto my-20 flex gap-10 justify-center flex-wrap">
           {[
             {
               icon: (
@@ -351,10 +346,9 @@ export default function Home() {
           ].map((contact, index) => (
             <AnimateOnScroll key={index} delay={index * 0.2}>
               <motion.li
-                className="p-5 flex flex-col justify-center items-center gap-2 list-none"
+                className="p-5 flex flex-col justify-center items-center gap-2"
                 whileHover={{ y: -5 }}
               >
-                {/* Corrigido o contêiner do ícone para evitar problemas com a borda */}
                 <motion.div
                   className="border border-white/50 rounded-full p-3 flex items-center justify-center hover:border-white transition-colors"
                   whileHover={{ scale: 1.1 }}
@@ -372,13 +366,13 @@ export default function Home() {
                 <motion.p className="text-lg font-bold">
                   {contact.title}
                 </motion.p>
-                <motion.h3 className="text-white/40 text-lg flex justify-between">
+                <motion.h3 className="text-white/40 text-lg">
                   {contact.value}
                 </motion.h3>
               </motion.li>
             </AnimateOnScroll>
           ))}
-        </motion.div>
+        </ul>
       </section>
 
       {/* Botão de voltar ao topo */}
