@@ -141,7 +141,7 @@ export default function Home() {
 
       <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen bg-xadres bg-xadres-size bg-opacity-10">
         <motion.div
-          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-8 py-12 shadow-lg before:absolute before:inset-0 before:-z-10 before:bg-white/5 before:blur-[100px]"
+          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-0 lg:px-8 py-12 shadow-lg before:absolute before:inset-0 before:-z-10 before:bg-white/5 before:blur-[100px]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -155,7 +155,7 @@ export default function Home() {
             Desenvolvedor Frontend
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-200"
+            className="text-base lg:text-xl text-gray-200"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
@@ -300,7 +300,7 @@ export default function Home() {
             >
               <Image
                 src="https://github.com/eduardomendes117.png"
-                className="rounded-full shadow-lg object-cover w-72 lg:w-80 h-auto border border-teal-500 p-4"
+                className="rounded-full shadow-lg object-cover w-48 lg:w-80 h-auto border border-teal-500 p-4"
                 alt="Foto profissional"
                 width={500}
                 height={400}
