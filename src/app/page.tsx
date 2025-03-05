@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Eye, Github } from "lucide-react";
 import { FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -323,6 +322,7 @@ export default function Home() {
               icon: (
                 <FaLinkedinIn className="text-4xl text-white/50 hover:text-white transition-colors" />
               ),
+              arial: "LinkedIn de Eduardo Mendes",
               title: "Linkedin",
               value: "@eduardo-mendes-frontend",
               href: "https://www.linkedin.com/in/eduardo-mendes-26538030b/",
@@ -331,6 +331,7 @@ export default function Home() {
               icon: (
                 <MdEmail className="text-4xl text-white/50 hover:text-white transition-colors" />
               ),
+              arial: "Gmail de Eduardo Mendes",
               title: "E-mail",
               value: "eduardo12mendes2016@gmail.com",
               href: "mailto:eduardo12mendes2016@gmail.com",
@@ -339,6 +340,7 @@ export default function Home() {
               icon: (
                 <RiGithubLine className="text-4xl text-white/50 hover:text-white transition-colors" />
               ),
+              arial: "Github de Eduardo Mendes",
               title: "Github",
               value: "@eduardomendes117",
               href: "https://github.com/eduardomendes117",
@@ -355,13 +357,14 @@ export default function Home() {
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Link
+                  <a
                     href={contact.href}
+                    aria-label={contact.arial}
                     target="_blank"
                     className="flex items-center justify-center"
                   >
                     {contact.icon}
-                  </Link>
+                  </a>
                 </motion.div>
                 <motion.p className="text-lg font-bold">
                   {contact.title}
