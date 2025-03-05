@@ -316,7 +316,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mt-10">Contatos</h2>
         </AnimateOnScroll>
 
-        <ul className="max-w-screen-xl mx-7 2xl:mx-auto my-20 flex gap-10 justify-center flex-wrap">
+        <div className="max-w-screen-xl mx-7 2xl:mx-auto my-20 flex gap-10 justify-center flex-wrap">
           {[
             {
               icon: (
@@ -347,7 +347,7 @@ export default function Home() {
             },
           ].map((contact, index) => (
             <AnimateOnScroll key={index} delay={index * 0.2}>
-              <motion.li
+              <motion.div
                 className="p-5 flex flex-col justify-center items-center gap-2"
                 whileHover={{ y: -5 }}
               >
@@ -372,10 +372,10 @@ export default function Home() {
                 <motion.h3 className="text-white/40 text-lg">
                   {contact.value}
                 </motion.h3>
-              </motion.li>
+              </motion.div>
             </AnimateOnScroll>
           ))}
-        </ul>
+        </div>
       </section>
 
       {/* Botão de voltar ao topo */}
@@ -391,6 +391,7 @@ export default function Home() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          aria-label="voltar ao inicio"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
