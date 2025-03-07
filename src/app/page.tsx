@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Eye, Github } from "lucide-react";
-import { FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaLinkedinIn, FaCodepen, FaTimes, FaBars } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
@@ -92,62 +93,73 @@ export default function Home() {
     },
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setIsVisible(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
   return (
     <>
       {/* Navegação fixa corrigida */}
       <motion.nav
-        className="absolute top-0 left-0 right-0 z-50 py-5 px-7"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-          <motion.h1
-            className="text-2xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Eduardo.
-          </motion.h1>
+      className="fixed bg-black/50 backdrop-blur top-0 left-0 right-0 z-50 py-4 px-7"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+        <motion.h1
+          className="text-2xl font-bold"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FaCodepen />
+        </motion.h1>
 
-          <motion.ul
-            className="flex gap-3 text-3xl"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.li variants={fadeIn}>
-              <a
-                href="https://github.com/eduardomendes117"
-                target="_blank"
-                aria-label="GitHub de Eduardo Mendes"
-              >
-                <FaGithub />
-              </a>
-            </motion.li>
+        <motion.ul
+          className="flex gap-3 text-3xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <motion.li>
+            <a
+              href="https://github.com/eduardomendes117"
+              target="_blank"
+              aria-label="GitHub de Eduardo Mendes"
+            >
+              <FaGithub />
+            </a>
+          </motion.li>
+          <motion.li>
+            <a
+              href="https://www.linkedin.com/in/eduardo-mendes-26538030b/"
+              target="_blank"
+              aria-label="LinkedIn de Eduardo Mendes"
+            >
+              <FaLinkedin />
+            </a>
+          </motion.li>
+        </motion.ul>
+      </div>
+    </motion.nav>
 
-            <motion.li variants={fadeIn}>
-              <a
-                href="https://www.linkedin.com/in/eduardo-mendes-26538030b/"
-                target="_blank"
-                aria-label="LinkedIn de Eduardo Mendes"
-              >
-                <FaLinkedin />
-              </a>
-            </motion.li>
-          </motion.ul>
-        </div>
-      </motion.nav>
-
-      <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen bg-xadres bg-xadres-size bg-opacity-10">
+      <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen">
         <motion.div
-          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-0 lg:px-8 py-12 before:absolute before:inset-0 before:-z-10 before:bg-white/15 before:blur-[100px]"
+          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-0 lg:px-8 py-12"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <motion.h1
-            className="text-4xl lg:text-6xl font-bold uppercase bg-gradient-to-r from-white via-white/70 to-white/10 text-transparent bg-clip-text"
+            className="text-4xl lg:text-6xl font-bold uppercase"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -160,8 +172,7 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Com experiência em criar interfaces modernas e intuitivas.
-            Especializado em React, Next.js, TypeScript e design responsivo.
+            Olá! Sou Eduardo, desenvolvedor front-end de 19 anos. Tenho experiência em JavaScript, TypeScript e com frameworks como Next.js, React. Tenho experiência em criação de landing pages e websites.
           </motion.p>
           <motion.div
             className="mt-4"
@@ -171,7 +182,7 @@ export default function Home() {
           >
             <motion.a
               href="#works"
-              className="bg-teal-500 text-background font-medium px-6 py-3 rounded-lg hover:bg-teal-600 transition-colors mr-5"
+              className="bg-white text-background font-medium px-6 py-3 rounded-lg hover:bg-white/70 transition-colors mr-5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -179,7 +190,7 @@ export default function Home() {
             </motion.a>
             <motion.a
               href=""
-              className="border border-teal-500 hover:bg-white/5 font-medium px-6 py-3 rounded-lg transition-colors"
+              className="border border-white hover:bg-white/5 font-medium px-6 py-3 rounded-lg transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -272,45 +283,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="my-16 mx-auto max-w-6xl px-5">
-        <div className="flex flex-wrap justify-center gap-8 items-center">
-          <AnimateOnScroll className="max-w-lg">
-            <h2 className="text-4xl font-bold mb-5">Sobre Mim</h2>
-
-            <div className="space-y-4">
-              <motion.p
-                className="text-lg leading-relaxed"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: false }}
-              >
-                Desenvolvedor Front-end com experiência em React.js, Next.js,
-                Tailwind CSS e TypeScript. Crio interfaces performáticas,
-                acessíveis e responsivas, focadas na experiência do usuário.
-              </motion.p>
-            </div>
-          </AnimateOnScroll>
-
-          <AnimateOnScroll delay={0.3}>
-            <motion.div
-              className="relative group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src="https://github.com/eduardomendes117.png"
-                className="rounded-full shadow-lg object-cover w-48 lg:w-80 h-auto border border-teal-500 p-4"
-                alt="Foto profissional"
-                width={500}
-                height={400}
-                priority
-              />
-            </motion.div>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
       <section id="contact" className="text-center">
         <AnimateOnScroll>
           <h2 className="text-4xl font-bold mt-10">Contatos</h2>
@@ -380,14 +352,15 @@ export default function Home() {
 
       {/* Botão de voltar ao topo */}
       <motion.div
-        className="fixed bottom-8 right-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-      >
+      className="fixed bottom-8 right-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {isVisible && (
         <motion.a
           href="#"
-          className="bg-teal-500 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
+          className="bg-white text-black p-3 rounded-full shadow-lg flex items-center justify-center"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -407,7 +380,8 @@ export default function Home() {
             <path d="M12 19V5M5 12l7-7 7 7" />
           </svg>
         </motion.a>
-      </motion.div>
+      )}
+    </motion.div>
     </>
   );
 }
