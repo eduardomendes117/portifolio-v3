@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Eye, Github } from "lucide-react";
-import { FaGithub, FaLinkedin, FaLinkedinIn, FaCodepen, FaTimes, FaBars } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
 import { ReactNode, useRef } from "react";
+import NavbarNext from "@/components/NavbarNext";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
@@ -109,7 +110,7 @@ export default function Home() {
   return (
     <>
       {/* Navegação fixa corrigida */}
-      <motion.nav
+      {/* <motion.nav
       className="fixed bg-black/50 backdrop-blur top-0 left-0 right-0 z-50 py-4 px-7"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -149,7 +150,8 @@ export default function Home() {
           </motion.li>
         </motion.ul>
       </div>
-    </motion.nav>
+    </motion.nav> */}
+    <NavbarNext/>
 
       <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen">
         <motion.div
@@ -288,7 +290,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mt-10">Contatos</h2>
         </AnimateOnScroll>
 
-        <div className="max-w-screen-xl mx-7 2xl:mx-auto my-20 flex gap-10 justify-center flex-wrap">
+        <div className="max-w-screen-xl mx-7 2xl:mx-auto p-20 flex gap-10 justify-center flex-wrap">
           {[
             {
               icon: (
