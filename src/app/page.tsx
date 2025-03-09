@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
 import { ReactNode, useRef } from "react";
-import NavbarNext from "@/components/NavbarNext";
+import NavbarNext from "../components/NavbarNext";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
@@ -109,49 +109,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Navegação fixa corrigida */}
-      {/* <motion.nav
-      className="fixed bg-black/50 backdrop-blur top-0 left-0 right-0 z-50 py-4 px-7"
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <motion.h1
-          className="text-2xl font-bold"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaCodepen />
-        </motion.h1>
-
-        <motion.ul
-          className="flex gap-3 text-3xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.li>
-            <a
-              href="https://github.com/eduardomendes117"
-              target="_blank"
-              aria-label="GitHub de Eduardo Mendes"
-            >
-              <FaGithub />
-            </a>
-          </motion.li>
-          <motion.li>
-            <a
-              href="https://www.linkedin.com/in/eduardo-mendes-26538030b/"
-              target="_blank"
-              aria-label="LinkedIn de Eduardo Mendes"
-            >
-              <FaLinkedin />
-            </a>
-          </motion.li>
-        </motion.ul>
-      </div>
-    </motion.nav> */}
-    <NavbarNext/>
+      <NavbarNext />
 
       <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen">
         <motion.div
@@ -174,7 +132,9 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Olá! Sou Eduardo, desenvolvedor front-end de 19 anos. Tenho experiência em JavaScript, TypeScript e com frameworks como Next.js, React. Tenho experiência em criação de landing pages e websites.
+            Olá! Sou Eduardo, desenvolvedor front-end de 19 anos. Tenho
+            experiência em JavaScript, TypeScript e com frameworks como Next.js,
+            React. Tenho experiência em criação de landing pages e websites.
           </motion.p>
           <motion.div
             className="mt-4"
@@ -184,7 +144,7 @@ export default function Home() {
           >
             <motion.a
               href="#works"
-              className="bg-white text-background font-medium px-6 py-3 rounded-lg hover:bg-white/70 transition-colors mr-5"
+              className="bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-white/70 transition-colors mr-5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -247,9 +207,11 @@ export default function Home() {
               >
                 <Image
                   src={image.src}
-                  className="bg-white"
-                  fill
                   alt={image.alt}
+                  fill
+                  style={{
+                    objectFit: 'cover',
+                  }}
                 />
 
                 {/* Overlay com botões */}
@@ -354,36 +316,36 @@ export default function Home() {
 
       {/* Botão de voltar ao topo */}
       <motion.div
-      className="fixed bottom-8 right-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      {isVisible && (
-        <motion.a
-          href="#"
-          className="bg-white text-black p-3 rounded-full shadow-lg flex items-center justify-center"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          aria-label="voltar ao inicio"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        className="fixed bottom-8 right-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {isVisible && (
+          <motion.a
+            href="#"
+            className="bg-white text-black p-3 rounded-full shadow-lg flex items-center justify-center"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            aria-label="voltar ao inicio"
           >
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
-        </motion.a>
-      )}
-    </motion.div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+          </motion.a>
+        )}
+      </motion.div>
     </>
   );
 }
