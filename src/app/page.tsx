@@ -9,6 +9,7 @@ import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import NavbarNext from "../components/NavbarNext";
+import { Link } from "@heroui/link";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
@@ -111,9 +112,9 @@ export default function Home() {
     <>
       <NavbarNext />
 
-      <header className="flex justify-center items-center h-[calc(100svh-40px)] px-5 min-h-screen">
+      <header className="flex justify-center items-center h-[calc(100svh-100px)] px-5">
         <motion.div
-          className="relative max-w-screen-sm text-center flex flex-col gap-4 rounded-full px-0 lg:px-8 py-12"
+          className="relative max-w-(--breakpoint-sm) text-center flex flex-col gap-4 rounded-full px-0 lg:px-8 py-12"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -144,7 +145,7 @@ export default function Home() {
           >
             <motion.a
               href="#works"
-              className="bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-white/70 transition-colors mr-5"
+              className="bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-white/70 transition-colors mr-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -192,7 +193,7 @@ export default function Home() {
         </section>
       </AnimateOnScroll>
 
-      <section id="works" className="my-10 mx-5 max-w-screen-xl lg:mx-auto">
+      <section id="works" className="my-10 mx-5 max-w-(--breakpoint-xl) lg:mx-auto">
         <AnimateOnScroll>
           <h2 className="text-4xl font-bold">Projetos</h2>
         </AnimateOnScroll>
@@ -252,7 +253,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold mt-10">Contatos</h2>
         </AnimateOnScroll>
 
-        <div className="max-w-screen-xl mx-7 2xl:mx-auto p-20 flex gap-10 justify-center flex-wrap">
+        <div className="max-w-(--breakpoint-xl) mx-7 2xl:mx-auto p-20 flex gap-10 justify-center flex-wrap">
           {[
             {
               icon: (

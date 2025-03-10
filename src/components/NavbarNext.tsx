@@ -21,7 +21,7 @@ export default function NavbarNext() {
   ];
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="border-b-white/5">
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <p className="font-bold text-inherit text-3xl"><FaCode /></p>
@@ -51,7 +51,7 @@ export default function NavbarNext() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu className="items-center pt-20">
+      <NavbarMenu className="items-center justify-center text-2xl">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
