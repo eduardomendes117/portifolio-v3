@@ -9,7 +9,6 @@ import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import NavbarNext from "../components/NavbarNext";
-import { Link } from "@heroui/link";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
