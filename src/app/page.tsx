@@ -9,6 +9,15 @@ import { RiGithubLine } from "react-icons/ri";
 import { motion, useInView } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import NavbarNext from "../components/NavbarNext";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+} from "react-icons/si";
+import { FiDownload } from "react-icons/fi";
 
 interface AnimateOnScrollProps {
   children: ReactNode;
@@ -44,38 +53,38 @@ export default function Home() {
     {
       src: "/images/spotify.png",
       alt: "Imagem de teste 2",
-      deploy: "#",
-      github: "#",
+      deploy: "https://spotify-imersaoalura.vercel.app/",
+      github: "https://github.com/eduardomendes117/spotify-imersao-react",
     },
     {
       src: "/images/xbox.png",
       alt: "Imagem de teste 3",
-      deploy: "#",
-      github: "#",
+      deploy: "https://projeto-xbox-eduu.vercel.app/",
+      github: "https://github.com/eduardomendes117/projeto-xbox",
     },
     {
       src: "/images/optimus.png",
       alt: "Imagem de teste 4",
-      deploy: "#",
-      github: "#",
+      deploy: "https://optimustech-eduu.vercel.app/",
+      github: "https://github.com/eduardomendes117/optimustech",
     },
     {
       src: "/images/netflix.png",
       alt: "Imagem de teste 5",
-      deploy: "#",
-      github: "#",
+      deploy: "https://netflixclone-eduu.vercel.app/",
+      github: "https://github.com/eduardomendes117/projeto-netflix",
     },
     {
       src: "/images/fokus.png",
       alt: "Imagem de teste 6",
-      deploy: "#",
-      github: "#",
+      deploy: "https://fokus-eduu.vercel.app/",
+      github: "https://github.com/eduardomendes117/fokus",
     },
     {
       src: "/images/aluraplus.png",
       alt: "Imagem de teste 7",
-      deploy: "#",
-      github: "#",
+      deploy: "https://aluraplus-eduu.vercel.app/",
+      github: "https://github.com/eduardomendes117/aluraplus",
     },
   ];
 
@@ -137,7 +146,7 @@ export default function Home() {
             React. Tenho experiência em criação de landing pages e websites.
           </motion.p>
           <motion.div
-            className="mt-4"
+            className="mt-4 flex justify-center items-center"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.0 }}
@@ -151,48 +160,67 @@ export default function Home() {
               Ver projetos
             </motion.a>
             <motion.a
-              href=""
-              className="border border-white hover:bg-white/5 font-medium px-6 py-3 rounded-lg transition-colors"
+              href="/pdf/Curriculo_Eduardo_Mendes.pdf"
+              download="Curriculo_Eduardo.pdf"
+              className="flex items-center gap-2 border border-white hover:bg-white/5 font-medium px-6 py-3 rounded-lg transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Baixar CV
+              <FiDownload className="text-xl" />
+              Resumo
             </motion.a>
           </motion.div>
         </motion.div>
       </header>
 
       <AnimateOnScroll>
-        <section id="skills" className="border-t mx-5 p-5 lg:p-10">
+        <section
+          id="skills"
+          className="border-t p-5 lg:p-10 max-w-(--breakpoint-xl) lg:mx-auto"
+        >
           <motion.div
-            className="flex flex-wrap justify-between gap-3 lg:gap-10 text-xl lg:text-3xl font-semibold"
+            className="flex flex-wrap justify-between gap-6 lg:gap-10 text-xl lg:text-3xl font-semibold"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
           >
             {[
-              "HTML",
-              "CSS",
-              "JAVASCRIPT",
-              "REACT",
-              "TYPESCRIPT",
-              "TAILWIND CSS",
+              { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
+              { name: "CSS", icon: <SiCss3 className="text-blue-500" /> },
+              {
+                name: "JAVASCRIPT",
+                icon: <SiJavascript className="text-yellow-400" />,
+              },
+              { name: "REACT", icon: <SiReact className="text-cyan-400" /> },
+              {
+                name: "TYPESCRIPT",
+                icon: <SiTypescript className="text-blue-600" />,
+              },
+              {
+                name: "TAILWIND CSS",
+                icon: <SiTailwindcss className="text-teal-400" />,
+              },
             ].map((skill, index) => (
-              <motion.p
+              <motion.div
                 key={index}
+                className="flex items-center gap-2"
                 variants={fadeIn}
                 whileHover={{ scale: 1.1, color: "#5eead4" }}
                 transition={{ duration: 0.2 }}
               >
-                {skill}
-              </motion.p>
+                {skill.icon}
+                <span>{skill.name}</span>
+              </motion.div>
             ))}
           </motion.div>
         </section>
       </AnimateOnScroll>
 
-      <section id="works" className="my-10 mx-5 max-w-(--breakpoint-xl) lg:mx-auto">
+      <section
+        id="works"
+        className="my-10 mx-5 max-w-(--breakpoint-xl) lg:mx-auto"
+      >
         <AnimateOnScroll>
           <h2 className="text-4xl font-bold">Projetos</h2>
         </AnimateOnScroll>
@@ -210,7 +238,7 @@ export default function Home() {
                   alt={image.alt}
                   fill
                   style={{
-                    objectFit: 'cover',
+                    objectFit: "cover",
                   }}
                 />
 
